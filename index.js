@@ -1,12 +1,11 @@
 /// <reference types="./index.ts" />
 
+// A simple, portable webcomponent on the go. Refer to docs for more info https://github.com/teamdunno/elemxx#readme
 /**
- * A simple, portable webcomponent on the go
  * @author teamdunno <https://github.com/teamdunno>
  * @license MIT
  * @module
- */ // -_-
-/** 
+ */ /** 
  * Detach reference from existing object (only function that returns the same reference)
  * 
  * @param val The object
