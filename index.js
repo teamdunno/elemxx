@@ -4,7 +4,6 @@
 /**
  * @author teamdunno <https://github.com/teamdunno>
  * @license MIT
- * @module
  */ /** 
  * Detach reference from existing object (only function that returns the same reference)
  * 
@@ -112,6 +111,7 @@
       },
       set value (newValue){
         v = newValue;
+        if (evs.length > 0) for(let i = 0; i < evs.length; i++)evs[i](value);
       },
       watch: function(func) {
         evs.push(func);
@@ -140,7 +140,7 @@
       stychild.innerHTML = proto().css;
       this.appendChild(stychild);
     }
-    if (this.onMount) this.onMount();
+    this.onMount();
   }
   /** use {@link Elemxx.onUnmount} instead */ disconnectedCallback() {
     this.mounted = false;
@@ -149,6 +149,6 @@
         this._EXX_TRACKERS[i].removeAll();
       }
     }
-    if (this.onUnmount) this.onUnmount();
+    this.onUnmount();
   }
 }
