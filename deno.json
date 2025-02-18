@@ -5,13 +5,12 @@
     "license": "MIT",
     "exports": {
         ".":"./index.ts",
-        "./js":"./index.js",
         "./decorators":"./decorators.ts"
     },
     "compilerOptions": {
         "lib":["dom", "dom.iterable", "dom.asynciterable", "es2015", "deno.ns", "esnext.decorators"]
     },
     "publish": {
-        "exclude": ["distBuilder.ts"]
+        "exclude": ["distBuilder.ts", ".vscode", ".github", "index.js"]
     }
 }

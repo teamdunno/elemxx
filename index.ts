@@ -2,6 +2,7 @@
  * A simple, portable webcomponent on the go
  * @author teamdunno <https://github.com/teamdunno>
  * @license MIT
+ * @module
  */
 
 /** 
@@ -52,6 +53,7 @@ export function detachRef<T extends unknown>(val:T):T {
         }
     }
 }
+/** `Track` interace. Used in {@link Elemxx.track} */
 export interface Track<T>{
     /** The value */
     value: T;
