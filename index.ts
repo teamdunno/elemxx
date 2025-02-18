@@ -1,3 +1,9 @@
+/**
+ * The superb portable webcomponent kit!
+ * @author teamdunno
+ * @license MIT
+ */
+
 /** 
  * Detach reference from existing object (only function that returns the same reference)
  * 
