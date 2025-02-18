@@ -9,7 +9,7 @@
         "./decorators":"./decorators.ts"
     },
     "compilerOptions": {
-        "lib":["dom", "dom.iterator", "dom.asynciterator", "es2015", "deno.ns", "esnext.decorators"]
+        "lib":["dom", "dom.iterable", "dom.asynciterable", "es2015", "deno.ns", "esnext.decorators"]
     },
     "publish": {
         "exclude": ["distBuilder.ts"]
