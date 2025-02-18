@@ -1,5 +1,5 @@
 /**
- * The superb portable webcomponent kit!
+ * A simple, portable webcomponent on the go
  * @author teamdunno <https://github.com/teamdunno>
  * @license MIT
  */
@@ -73,24 +73,34 @@ export interface Track<T>{
     /** Remove all events */
     removeAll():void;
 }
-/** The superb portable webcomponent kit! */
+/** A simple, portable webcomponent on the go */
 export class Elemxx extends HTMLElement {
     /** CSS string for the elem. It would be appended to DOM if set */
-    declare static css?:string;
-    /** Attribute list. If defined, {@link Track} will be added alongside the name to the {@link Elemxx.attrs} */
-    declare static attrList?:string[];
+    static css?:string=undefined;
+    /** Attribute list. If defined, {@link Track} will be added alongside the name to the {@link Elemxx.attrs}, and not cleaned on unmounted */
+    static attrList?:string[]=undefined;
+    /** Shorthand for {@link https://developer.mozilla.org/docs/Web/API/Node/isConnected HTMLElement.isConnected} */
+    protected mounted:boolean = false;
     /** use {@link Elemxx.attrs} insead */
     public static observedAttributes=this.attrList;
-    /** Attributes that are defined in {@link Elemxx.attrList} */
+    /** Attributes that are defined in {@link Elemxx.attrList}. Not cleaned when unmounted unlike normal trackers on {@link Elemxx.track} */
     public readonly attrs:Record<string, Track<string|null>> = {}
     private _EXX_TRACKERS:Track<unknown>[] = []
-    
+    /** Run this function on mounted */
     onMount(){};
+    /** Run this function on unmounted */
     onUnmount(){};
     constructor() {
         super();
         const proto = ()=>Object.getPrototypeOf(this)
         proto().css = proto().css.replace(/:me/g, this.localName)
+        const attrList = proto().attrList as string[]
+        if (attrList.length>0) {
+            for (let i=0;i<attrList.length;i++) {
+                const name = attrList[i]
+                this.attrs[name] = this.track<string|null>(this.getAttribute(name), true)
+            }
+        }
         // TODO: freeze these
         // Object.freeze(proto().css)
         // Object.freeze(proto().attrList)
@@ -127,7 +137,7 @@ export class Elemxx extends HTMLElement {
             evs.push(func)
           },
           remove: function (func: (value: T) => void): void {
-            evs = evs.filter((t)=>t===func)
+            evs = evs.filter((t)=>t!==func)
           },
           removeAll: function (): void {
             evs = []
@@ -140,6 +150,7 @@ export class Elemxx extends HTMLElement {
     }
     /** use {@link Elemxx.onMount} instead */
     public connectedCallback() {
+        this.mounted = true
         const proto = ()=>Object.getPrototypeOf(this)
         if (proto().css) {
             const stychild = document.createElement("style")
@@ -150,6 +161,12 @@ export class Elemxx extends HTMLElement {
     }
     /** use {@link Elemxx.onUnmount} instead */
     public disconnectedCallback() {
+        this.mounted = false
+        if (this._EXX_TRACKERS.length>0) {
+            for (let i=0;i<this._EXX_TRACKERS.length;i++) {
+                this._EXX_TRACKERS[i].removeAll()
+            }
+        }
         if (this.onUnmount) this.onUnmount()
     }
 }
