@@ -22,6 +22,6 @@ jobs:
 
       - name: Generate emitted javascript file
         run: deno run --allow-env --allow-read --allow-write --allow-net ./distBuilder.ts
-
+      - uses: EndBug/add-and-commit@v9
       - name: Publish package
         run: deno publish
