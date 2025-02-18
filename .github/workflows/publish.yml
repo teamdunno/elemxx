@@ -14,12 +14,12 @@ jobs:
       id-token: write
 
     steps:
+      - uses: actions/checkout@v4
+      
       - uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x
 
-      - name: ls
-        run: ls
       - name: Generate emitted javascript file
         run: deno run --allow-env --allow-read --allow-write ./distBuilder.ts
 
