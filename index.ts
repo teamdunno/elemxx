@@ -5,8 +5,6 @@
  * @module
  */
 
-// -_-
-
 /** 
  * Detach reference from existing object (only function that returns the same reference)
  * 
