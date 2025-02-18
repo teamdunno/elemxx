@@ -22,6 +22,11 @@ jobs:
 
       - name: Generate emitted javascript file
         run: deno run --allow-env --allow-read --allow-write --allow-net ./distBuilder.ts
-      - uses: EndBug/add-and-commit@v9
+      - name: Commit to github
+        run: |
+          git config --global user.name "Elemxx bot"
+          git config --global user.email "action@users.noreply.github.com"
+          git commit -a -m "Transpile typescript files"
+          git push
       - name: Publish package
         run: deno publish
