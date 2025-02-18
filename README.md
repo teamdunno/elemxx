@@ -107,7 +107,7 @@ $ deno add jsr:@dunno/elemxx
 
 ```js
 // replace /path/to/elemxx/index.js with the imported elemxx module
-import { Elemxx } "/path/to/elemxx/index.js";
+import { Elemxx } from "/path/to/elemxx/index.js";
 // define simple sleep function, instead of nesting in setTimeout
 const sleep = (ms)=>new Promise((res, _)=>setTimeout(res, ms))
 // make the new typing elem
