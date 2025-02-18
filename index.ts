@@ -1,6 +1,6 @@
 /**
  * The superb portable webcomponent kit!
- * @author teamdunno
+ * @author teamdunno <https://github.com/teamdunno>
  * @license MIT
  */
 
