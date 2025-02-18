@@ -1,0 +1,16 @@
+{
+    "name": "@dunno/elemxx",
+    "lock": false,
+    "version": "0.1.0",
+    "license": "MIT",
+    "exports": {
+        ".":"./index.ts",
+        "./decorators":"./decorators.ts"
+    },
+    "compilerOptions": {
+        "lib":["dom", "dom.iterator", "dom.asynciterator", "es2015", "deno.ns"]
+    },
+    "publish": {
+        "exclude": ["distBuilder.ts"]
+    }
+}
