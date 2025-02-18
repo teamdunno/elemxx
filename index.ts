@@ -1,5 +1,5 @@
+// A simple, portable webcomponent on the go. Refer to docs for more info https://github.com/teamdunno/elemxx#readme
 /**
- * A simple, portable webcomponent on the go. Refer to docs for more info https://github.com/teamdunno/elemxx#readme
  * @author teamdunno <https://github.com/teamdunno>
  * @license MIT
  * @module
