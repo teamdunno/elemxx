@@ -5,6 +5,7 @@
     "license": "MIT",
     "exports": {
         ".":"./index.ts",
+        "./js":"./index.js",
         "./decorators":"./decorators.ts"
     },
     "compilerOptions": {
