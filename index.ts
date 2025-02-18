@@ -2,7 +2,6 @@
 /**
  * @author teamdunno <https://github.com/teamdunno>
  * @license MIT
- * @module
  */
 
 /** 
@@ -130,6 +129,7 @@ export class Elemxx extends HTMLElement {
           },
           set value(newValue:T){
             v = newValue
+            if (evs.length>0) for (let i=0;i<evs.length;i++) evs[i](value)
           },
           watch: function (func: (value: T) => void): void {
             evs.push(func)
@@ -159,7 +159,7 @@ export class Elemxx extends HTMLElement {
             stychild.innerHTML = proto().css
             this.appendChild(stychild)
         }
-        if (this.onMount) this.onMount()
+        this.onMount()
     }
     /** use {@link Elemxx.onUnmount} instead */
     public disconnectedCallback() {
@@ -169,6 +169,6 @@ export class Elemxx extends HTMLElement {
                 this._EXX_TRACKERS[i].removeAll()
             }
         }
-        if (this.onUnmount) this.onUnmount()
+        this.onUnmount()
     }
 }

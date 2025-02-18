@@ -1,5 +1,3 @@
-> sorry guys! We have a trouble showing the docs earlier, since JSR has a new update https://jsr.io/docs/writing-docs#module-documentation
-
 # Elemxx
 
 A simple, portable webcomponent on the go. Heavily inspired by [Lit](https://github.com/lit/lit)
