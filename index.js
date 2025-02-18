@@ -5,7 +5,8 @@
  * @author teamdunno <https://github.com/teamdunno>
  * @license MIT
  * @module
- */ /** 
+ */ // -_-
+/** 
  * Detach reference from existing object (only function that returns the same reference)
  * 
  * @param val The object
