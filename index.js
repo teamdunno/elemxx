@@ -1,4 +1,5 @@
-//@ts-nocheck: deno stfu
+/// <reference types="./index.ts" />
+
 /**
  * A simple, portable webcomponent on the go
  * @author teamdunno <https://github.com/teamdunno>
