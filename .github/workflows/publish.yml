@@ -18,8 +18,10 @@ jobs:
         with:
           deno-version: v2.x
 
+      - name: ls
+        run: ls
       - name: Generate emitted javascript file
-        run: deno run --allow-env --allow-read --allow-write distBuilder.ts
+        run: deno run --allow-env --allow-read --allow-write ./distBuilder.ts
 
       - name: Publish package
         run: deno publish
