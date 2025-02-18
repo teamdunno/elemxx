@@ -4,6 +4,7 @@
  * A simple, portable webcomponent on the go
  * @author teamdunno <https://github.com/teamdunno>
  * @license MIT
+ * @module
  */ /** 
  * Detach reference from existing object (only function that returns the same reference)
  * 
