@@ -1,10 +1,9 @@
 // A simple, portable webcomponent on the go. Refer to docs for more info https://github.com/teamdunno/elemxx#readme
 /**
  * @author teamdunno <https://github.com/teamdunno>
+ * @version 0.5.2
  * @license MIT
  */
-
-import { define } from "./decorators.ts";
 
 /** 
  * Detach reference from existing object (only function that returns the same reference)
@@ -179,8 +178,4 @@ export class Elemxx extends HTMLElement {
         }
         this.onUnmount()
     }
-}
-@define("ok")
-export class o extends Elemxx {
-
 }
