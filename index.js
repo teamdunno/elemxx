@@ -155,4 +155,4 @@
     }
     this.onUnmount();
   }
-}
+} // done
