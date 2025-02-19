@@ -1,5 +1,3 @@
-/// <reference types="./index.ts" />
-
 // A simple, portable webcomponent on the go. Refer to docs for more info https://github.com/teamdunno/elemxx#readme
 /**
  * @author teamdunno <https://github.com/teamdunno>
@@ -69,7 +67,7 @@
 /** A simple, portable webcomponent on the go */ export class Elemxx extends HTMLElement {
   /** CSS string for the elem. It would be appended to DOM if set */ static css = undefined;
   /** Attribute list. If defined, {@link Track} will be added alongside the name to the {@link Elemxx.attrs}, and not cleaned on unmounted */ static attrList = undefined;
-  /** Shorthand for {@link https://developer.mozilla.org/docs/Web/API/Node/isConnected HTMLElement.isConnected} */ mounted = false;
+  /** Detect if element was mounted */ mounted = false;
   /** use {@link Elemxx.attrs} insead */ static observedAttributes = this.attrList;
   /** Attributes that are defined in {@link Elemxx.attrList}. Not cleaned when unmounted unlike normal trackers on {@link Elemxx.track} */ attrs = {};
   _EXX_TRACKERS = [];
@@ -77,15 +75,6 @@
   /** Run this function on unmounted */ onUnmount() {}
   constructor(){
     super();
-    const proto = ()=>Object.getPrototypeOf(this);
-    proto().css = proto().css.replace(/:me/g, this.localName);
-    const attrList = proto().attrList;
-    if (attrList.length > 0) {
-      for(let i = 0; i < attrList.length; i++){
-        const name = attrList[i];
-        this.attrs[name] = this.track(this.getAttribute(name), true);
-      }
-    }
   // TODO: freeze these
   // Object.freeze(proto().css)
   // Object.freeze(proto().attrList)
@@ -133,11 +122,28 @@
     return t;
   }
   /** use {@link Elemxx.onMount} instead */ connectedCallback() {
-    this.mounted = true;
-    const proto = ()=>Object.getPrototypeOf(this);
-    if (proto().css) {
+    // deno-lint-ignore no-explicit-any
+    const proto = {};
+    const descriptors = Object.getOwnPropertyDescriptors(this);
+    const keysDescriptor = Object.keys(descriptors);
+    const valuesDescriptor = Object.values(descriptors);
+    for(let i = 0; i < keysDescriptor.length; i++){
+      proto[keysDescriptor[i]] = valuesDescriptor[i].value;
+    }
+    if (proto.attrList && proto.attrList.length > 0) {
+      const attrList = proto.attrList;
+      for(let i = 0; i < attrList.length; i++){
+        const name = attrList[i];
+        const obj = this.attrs[name];
+        const value = this.getAttribute(name);
+        if (typeof obj === "object") obj.value = value;
+        else this.track(value, true);
+      }
+    }
+    if (proto.css) {
+      proto.css = proto.css.replace(/:me/g, this.localName);
       const stychild = document.createElement("style");
-      stychild.innerHTML = proto().css;
+      stychild.innerHTML = proto.css;
       this.appendChild(stychild);
     }
     this.onMount();

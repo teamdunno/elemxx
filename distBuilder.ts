@@ -6,5 +6,5 @@ for (const [pth, res] of await transpile(url)) {
     const realpth = path.fromFileUrl(pth)
     // const p = path.join(path.dirname(realpth), "dist", path.basename(realpth).replaceAll(".ts", ".js"))
     const p = realpth.replaceAll(".ts", ".js")
-    await Deno.writeFile(p, textEnc.encode(`/// <reference types="./${path.relative(path.dirname(p), realpth).replaceAll("\\", "/")}" />\n\n${res}`))
+    await Deno.writeFile(p, textEnc.encode(res))
 }

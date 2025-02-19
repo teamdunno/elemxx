@@ -1,3 +1,5 @@
+> Note: <0.5.2 is unstable. This version is the most stable
+
 # Elemxx
 
 A simple, portable webcomponent on the go. Heavily inspired by [Lit](https://github.com/lit/lit)
