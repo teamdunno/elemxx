@@ -135,7 +135,7 @@
         const obj = this.attrs[name];
         const value = this.getAttribute(name);
         if (typeof obj === "object") obj.value = value;
-        else this.track(value, true);
+        else this.attrs[name] = this.track(value, true);
       }
     }
     if (proto.css) {

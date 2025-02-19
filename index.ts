@@ -156,8 +156,8 @@ export class Elemxx extends HTMLElement {
                 const name = attrList[i]
                 const obj = this.attrs[name]
                 const value = this.getAttribute(name)
-                if (typeof obj === "object") obj.value = value
-                else this.track<string | null>(value, true)
+                if (typeof obj === "object") obj.value = value;
+                else this.attrs[name] = this.track(value, true);
             }
         }
         if (proto.css) {
