@@ -40,7 +40,8 @@ export const define: <T extends Elemxx>(name?: string) => DecoratorFunc<T> = <T 
  */
 export const attrList: <T extends Elemxx>(list: string[]) => DecoratorFunc<T> = <T extends Elemxx>(list: string[]) => (target: unknown, _c: ElemxxDecoratorContext<T>) => {
     checkTarget(target)
-    Object.getPrototypeOf(target).observedAttributes = list
+    const proto = Object.fromEntries(Object.entries(Object.getPrototypeOf(target).constructor))
+    proto.attrList = list
 };
 /** 
  * Add CSS to static Elemxx
@@ -49,5 +50,6 @@ export const attrList: <T extends Elemxx>(list: string[]) => DecoratorFunc<T> = 
  */
 export const css: <T extends Elemxx>(css: string) => DecoratorFunc<T> = <T extends Elemxx>(css: string) => (target: unknown, _c: ElemxxDecoratorContext<T>) => {
     checkTarget(target)
-    Object.getPrototypeOf(target).css = css
+    const proto = Object.fromEntries(Object.entries(Object.getPrototypeOf(target).constructor))
+    proto.css = css
 };

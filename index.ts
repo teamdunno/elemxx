@@ -3,6 +3,9 @@
  * @author teamdunno <https://github.com/teamdunno>
  * @license MIT
  */
+
+import { define } from "./decorators.ts";
+
 /** 
  * Detach reference from existing object (only function that returns the same reference)
  * 
@@ -176,4 +179,8 @@ export class Elemxx extends HTMLElement {
         }
         this.onUnmount()
     }
+}
+@define("ok")
+export class o extends Elemxx {
+
 }
