@@ -75,15 +75,17 @@
   /** Run this function on unmounted */ onUnmount() {}
   constructor(){
     super();
-  // TODO: freeze these
-  // Object.freeze(proto().css)
-  // Object.freeze(proto().attrList)
-  // Object.freeze(this.onMount)
-  // Object.freeze(this.onUnmount)
   }
   /** use {@link Elemxx.attrs} instead */ attributeChangedCallback(k, _, n) {
     if (typeof this.attrs[k] === "undefined") return;
     this.attrs[k].value = n;
+  }
+  /** 
+     * ⚠️ **Note**: This is different than `this.attrs`
+     * 
+     * Shorthand for `Object.values(this.attrs)`
+    */ eachAttrs() {
+    return Object.values(this.attrs);
   }
   /** 
      * Track the changes of value
