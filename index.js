@@ -1,6 +1,7 @@
 // A simple, portable webcomponent on the go. Refer to docs for more info https://github.com/teamdunno/elemxx#readme
 /**
  * @author teamdunno <https://github.com/teamdunno>
+ * @version 0.5.2
  * @license MIT
  */ /** 
  * Detach reference from existing object (only function that returns the same reference)
@@ -124,14 +125,9 @@
     return t;
   }
   /** use {@link Elemxx.onMount} instead */ connectedCallback() {
-    // deno-lint-ignore no-explicit-any
-    const proto = {};
-    const descriptors = Object.getOwnPropertyDescriptors(this);
-    const keysDescriptor = Object.keys(descriptors);
-    const valuesDescriptor = Object.values(descriptors);
-    for(let i = 0; i < keysDescriptor.length; i++){
-      proto[keysDescriptor[i]] = valuesDescriptor[i].value;
-    }
+    // https://stackoverflow.com/a/73551405/22147523
+    // weird solution, but it works
+    const proto = Object.fromEntries(Object.entries(this.constructor));
     if (proto.attrList && proto.attrList.length > 0) {
       const attrList = proto.attrList;
       for(let i = 0; i < attrList.length; i++){
