@@ -3,10 +3,19 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.5.4] - 2025-05-18
+## [0.5.4] - 2025-04-18
+
+### Added implementation
+- Checks the styles if exist or not, if it dosent, add it to DOM and add to the list of added styles. This was a bug since its adding styles infinitely without checking
+
+## [0.5.4] - 2025-04-18
+
+Please upgrade to `0.5.5` since theres a bug when checking the styles
+
+### Removed implementation
+- `Elemxx.attrList` was removed, use `Elemxx.observedAttributes` instead
 
 ### Changed implementation
-- `Elemxx.attrList` was removed, use `Elemxx.observedAttributes` instead
 -  Instead adding on current Element, `Elemxx.css` will add the css to head
 
 ## [0.5.3] - 2025-02-19
