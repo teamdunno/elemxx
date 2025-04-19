@@ -9,7 +9,7 @@ import { Elemxx } from "./index.ts";
 /** check if target was Elemxx */
 const checkTarget = (target: unknown) => {
     const t = Object.getPrototypeOf(target)
-    if (t! instanceof Elemxx) throw new TypeError("Elemxx decorator target only can be applied to Elemxx itself")
+    if (t! instanceof Elemxx) throw new TypeError("Elemxx decorator target can only be applied to Elemxx itself")
 }
 /** decorator context */
 type ElemxxDecoratorContext<T = Elemxx> = ClassDecoratorContext<{ new(...args: unknown[]): T }>

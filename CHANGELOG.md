@@ -3,14 +3,22 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## [0.5.6] - 2025-04-19
+
+### Fixed implementation
+- Add the styles inside head. It has a bug on the style back then, it would work on `0.5.5`, but we'll yank both `0.5.5` and `0.5.4`
+
 ## [0.5.5] - 2025-04-19
+
+Please upgrade to `0.5.6` since theres a bug when checking the styles
 
 ### Added implementation
 - Checks the styles if exist or not, if it dosent, add it to DOM and add to the list of added styles. This was a bug since its adding styles infinitely without checking
 
 ## [0.5.4] - 2025-04-18
 
-Please upgrade to `0.5.5` since theres a bug when checking the styles
+Please upgrade to `0.5.6` since theres a bug when checking the styles
 
 ### Removed implementation
 - `Elemxx.attrList` was removed, use `Elemxx.observedAttributes` instead

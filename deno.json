@@ -1,7 +1,7 @@
 {
     "name": "@dunno/elemxx",
     "lock": false,
-    "version": "0.5.5",
+    "version": "0.5.6",
     "license": "MIT",
     "exports": {
         ".":"./index.ts",
