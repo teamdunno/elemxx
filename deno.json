@@ -11,6 +11,6 @@
         "lib":["dom", "dom.iterable", "dom.asynciterable", "es2015", "deno.ns", "esnext.decorators"]
     },
     "publish": {
-        "exclude": ["distBuilder.ts"]
+        "exclude": ["distBuilder.ts", ".github", ".vscode"]
     }
 }
