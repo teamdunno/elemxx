@@ -3,8 +3,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.6] - 2025-04-19
+All `0.5.4>` are merged to this version
 
-## [0.5.6] - 2025-04-19
+## [0.5.6] & [0.5.7] - 2025-04-19
 
 ### Fixed implementation
 - Add the styles inside head. It has a bug on the style back then, it would work on `0.5.5`, but we'll yank both `0.5.5` and `0.5.4`
