@@ -3,7 +3,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.5.4] - 2025-04-19
+## [0.5.5] - 2025-04-19
 
 ### Added implementation
 - Checks the styles if exist or not, if it dosent, add it to DOM and add to the list of added styles. This was a bug since its adding styles infinitely without checking
